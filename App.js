@@ -1,21 +1,36 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+//import liraries
+import React, { Component } from 'react';
+import {Text, View, Button, Alert, TouchableOpacity} from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+import styles from './src/styles/LoginStyles'; 
+import LoginComponent from './src/components/Login.js'
+
+// create a component
+class App extends Component {
+
+  state={
+    myState: 'Aulas síncronas: exemplos de aplicação.',
+  }
+  updateState = () =>{
+    this.setState({
+      myState: 'Aulas assíncronas: Atividades.'})
+  }
+
+  render()  {
+    return (
+      <View style={styles.container}>
+        <LoginComponent myState = {this.state.myState} updateState = {this.updateState}/>      
+      </View>
+     
+    ); 
+};
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+//make this component available to the app
+export default App;
+
+
+
+
+
+
