@@ -1,21 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+//import liraries
+import React, { Component } from 'react';
+import {createAppContainer} from 'react-navigation'; 
+import {createStackNavigator} from 'react-navigation-stack';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+import Login from './src/components/Login';
+import Home from './src/components/Home';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+// create a component
+const MainNavigation = createStackNavigator({
+  Login: {
+    screen: Login,
+    navigationOptions:{
+    header: null
+    }
   },
-});
+  Home: {
+    screen: Home,
+    navigationOptions:{
+    headerTitle: 'Home',
+    tabBarLabel: 'Testando!',
+    }
+  }
+}
+)
+
+//make this component available to the app
+export default createAppContainer(MainNavigation);
+
+
+
+
+
+
